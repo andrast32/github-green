@@ -1,15 +1,15 @@
-name: GitHub Activity Dashboard
+name: Daily Green
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: '0 * * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  dashboard:
+  green:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,46 +20,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Update files
-        shell: bash
+      - name: Update file
         run: |
-          LAST_UTC=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          NEXT_UTC=$(date -u -d "+5 minutes" +"%Y-%m-%d %H:%M:%S UTC")
-
-          LAST_WIB=$(TZ=Asia/Jakarta date +"%Y-%m-%d %H:%M:%S WIB")
-          NEXT_WIB=$(TZ=Asia/Jakarta date -d "+5 minutes" +"%Y-%m-%d %H:%M:%S WIB")
-
-          printf "GitHub Green Bot\n\nStatus : ONLINE\n\nLast Update\nUTC : %s\nWIB : %s\n\nNext Update\nUTC : %s\nWIB : %s\n" \
-          "$LAST_UTC" "$LAST_WIB" "$NEXT_UTC" "$NEXT_WIB" > keepalive.txt
-
-          {
-            echo "# GitHub Activity Dashboard"
-            echo ""
-            echo "## Status"
-            echo ""
-            echo "| Item | Value |"
-            echo "|------|-------|"
-            echo "| Status | 🟢 ONLINE |"
-            echo "| Schedule | Every 5 Minutes |"
-            echo "| Owner | ${{ github.repository_owner }} |"
-            echo "| Repository | ${{ github.event.repository.name }} |"
-            echo ""
-            echo "## Last Update"
-            echo ""
-            echo "- UTC : $LAST_UTC"
-            echo "- WIB : $LAST_WIB"
-            echo ""
-            echo "## Next Update"
-            echo ""
-            echo "- UTC : $NEXT_UTC"
-            echo "- WIB : $NEXT_WIB"
-          } > README.md
+          echo "Last update: $(date -u)" > keepalive.txt
 
       - name: Commit
         run: |
           git add .
-          git diff --cached --quiet && exit 0
-          git commit -m "Auto Update"
+          git diff --cached --quiet || git commit -m "🌱 Daily contribution"
 
       - name: Push
-        run: git push
+        run: |
+          git push
