@@ -5,7 +5,7 @@
 | Item | Value |
 |------|-------|
 | Status | 🟢 ONLINE |
-| Schedule | Every 5 Minutes |
+| Schedule | Every 1 Hour |
 | Owner | andrast32 |
 | Repository | github-green |
 
@@ -16,5 +16,5 @@
 
 ## Next Update
 
-- UTC : 2026-07-26 22:47:00 UTC
-- WIB : 2026-07-27 05:47:00 WIB
+- UTC : 2026-07-26 23:42:00 UTC
+- WIB : 2026-07-27 06:42:00 WIB

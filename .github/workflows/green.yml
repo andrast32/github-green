@@ -2,7 +2,7 @@ name: GitHub Activity Dashboard
 
 on:
     schedule:
-        - cron: "*/5 * * * *"
+        - cron: "0 * * * *"
     workflow_dispatch:
 
 permissions:
@@ -40,7 +40,7 @@ jobs:
                     echo "| Item | Value |"
                     echo "|------|-------|"
                     echo "| Status | 🟢 ONLINE |"
-                    echo "| Schedule | Every 5 Minutes |"
+                    echo "| Schedule | Every 1 Hour |"
                     echo "| Owner | ${{ github.repository_owner }} |"
                     echo "| Repository | ${{ github.event.repository.name }} |"
                     echo ""
