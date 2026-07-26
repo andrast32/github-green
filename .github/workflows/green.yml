@@ -23,7 +23,7 @@ jobs:
 
       - name: Update file
         run: |
-          echo "$(date)" >> keepalive.txt
+          echo "Last update: $(date -u)" > keepalive.txt
 
       - name: Commit
         run: |
