@@ -1,4 +1,4 @@
-name: 🌱 GitHub Activity Dashboard
+name: GitHub Activity Dashboard
 
 on:
   schedule:
@@ -29,13 +29,13 @@ jobs:
           LAST_WIB=$(TZ=Asia/Jakarta date +"%Y-%m-%d %H:%M:%S WIB")
           NEXT_WIB=$(TZ=Asia/Jakarta date -d "+5 minutes" +"%Y-%m-%d %H:%M:%S WIB")
 
-          printf "🌱 GitHub Green Bot\n\nStatus : ONLINE\n\nLast Update\nUTC : %s\nWIB : %s\n\nNext Update\nUTC : %s\nWIB : %s\n" \
+          printf "GitHub Green Bot\n\nStatus : ONLINE\n\nLast Update\nUTC : %s\nWIB : %s\n\nNext Update\nUTC : %s\nWIB : %s\n" \
           "$LAST_UTC" "$LAST_WIB" "$NEXT_UTC" "$NEXT_WIB" > keepalive.txt
 
           {
-            echo "# 🌱 GitHub Activity Dashboard"
+            echo "# GitHub Activity Dashboard"
             echo ""
-            echo "## 🤖 Status"
+            echo "## Status"
             echo ""
             echo "| Item | Value |"
             echo "|------|-------|"
@@ -44,12 +44,12 @@ jobs:
             echo "| Owner | ${{ github.repository_owner }} |"
             echo "| Repository | ${{ github.event.repository.name }} |"
             echo ""
-            echo "## 📅 Last Update"
+            echo "## Last Update"
             echo ""
             echo "- UTC : $LAST_UTC"
             echo "- WIB : $LAST_WIB"
             echo ""
-            echo "## ⏰ Next Update"
+            echo "## Next Update"
             echo ""
             echo "- UTC : $NEXT_UTC"
             echo "- WIB : $NEXT_WIB"
@@ -59,7 +59,7 @@ jobs:
         run: |
           git add .
           git diff --cached --quiet && exit 0
-          git commit -m "🌱 Auto Update"
+          git commit -m "Auto Update"
 
       - name: Push
         run: git push
