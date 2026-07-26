@@ -2,8 +2,8 @@ name: Daily Green
 
 on:
   schedule:
-    # 00:05 UTC = 07:05 WIB
-    - corn: '5 0 * * *'
+    # 00:00 UTC = 07:00 WIB
+     - cron: '0 * * * *'
     workflow_dispatch:
 
 premissions:
