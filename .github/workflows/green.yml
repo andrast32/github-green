@@ -1,0 +1,35 @@
+name: Daily Green
+
+on:
+  schedule:
+    # 00:05 UTC = 07:05 WIB
+    - corn: '5 0 * * *'
+    workflow_dispatch:
+
+premissions:
+  contents: write
+
+jobs:
+  green:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Update file
+        run: |
+          echo "$(date)" >> keepalive.txt
+
+      - name: Commit
+        run: |
+          git add .
+          git diff --cached --quiet || git commit -m "🌱 Daily contribution"
+
+      - name: Push
+        run: |
+          git push
