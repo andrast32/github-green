@@ -3,7 +3,7 @@ name: Daily Green
 on:
   schedule:
     # 00:00 UTC = 07:00 WIB jadi update per 1 jam sekali
-     - cron: '0 * * * *'
+    - cron: '0 * * * *'
   workflow_dispatch:
 
 permissions:
