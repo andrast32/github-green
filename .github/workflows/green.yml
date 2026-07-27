@@ -18,16 +18,16 @@ jobs:
             - name: Configure Git
               run: |
                   git config user.name "andrast32"
-                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git config user.email "52090531+andrast32@users.noreply.github.com"
 
             - name: Update files
               shell: bash
               run: |
                   LAST_UTC=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-                  NEXT_UTC=$(date -u -d "+5 minutes" +"%Y-%m-%d %H:%M:%S UTC")
-
+                  NEXT_UTC=$(date -u -d "+1 hour" +"%Y-%m-%d %H:%M:%S UTC")
+                  
                   LAST_WIB=$(TZ=Asia/Jakarta date +"%Y-%m-%d %H:%M:%S WIB")
-                  NEXT_WIB=$(TZ=Asia/Jakarta date -d "+5 minutes" +"%Y-%m-%d %H:%M:%S WIB")
+                  NEXT_WIB=$(TZ=Asia/Jakarta date -d "+1 hour" +"%Y-%m-%d %H:%M:%S WIB")
 
                   printf "GitHub Green Bot\n\nStatus : ONLINE\n\nLast Update\nUTC : %s\nWIB : %s\n\nNext Update\nUTC : %s\nWIB : %s\n" \
                   "$LAST_UTC" "$LAST_WIB" "$NEXT_UTC" "$NEXT_WIB" > keepalive.txt
